@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula — Sistemas de Controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="index.html">
+    <span class="marca-sig">C(s)</span>
+    <span class="marca-txt">Sistemas de Controle</span>
+  </a>
+  <nav class="nav" aria-label="Seções do portal">
+    <a href="index.html#aulas">Aulas</a>
+    <a href="index.html#modelos">Modelos</a>
+    <a href="index.html#avaliacao">Avaliação</a>
+  </nav>
+</header>
+
+<div class="leitura">
+  <aside class="sumario" id="sumario" aria-label="Sumário da aula"></aside>
+  <article class="texto" id="texto">
+    <p class="carregando">Carregando a aula…</p>
+  </article>
+</div>
+
+<footer class="rodape">
+  <p><a href="index.html">Voltar ao portal</a></p>
+</footer>
+
+<script src="animacoes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+  var alvo  = document.getElementById('texto');
+  var sumEl = document.getElementById('sumario');
+
+  var arquivo = new URLSearchParams(location.search).get('f') || '';
+  if(!/^[A-Za-z0-9_-]+$/.test(arquivo)){
+    alvo.innerHTML = '<h1>Aula não encontrada</h1><p>Escolha uma aula na lista do portal.</p>';
+    return;
+  }
+
+  fetch('conteudo/' + arquivo + '.md')
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function(md){ montar(md); })
+    .catch(function(){
+      alvo.innerHTML = '<h1>Aula não encontrada</h1><p>O arquivo <code>' + arquivo +
+                       '.md</code> não está na pasta <code>conteudo/</code>.</p>' +
+                       '<p><a href="index.html#aulas">Ver a lista de aulas</a></p>';
+    });
+
+  function montar(md){
+    // 1. tira a matematica da frente do markdown.
+    //    sem isso o marked come as barras invertidas: \right\} vira \right},
+    //    o \\ das matrizes some e o | do modulo parte a tabela ao meio.
+    var formulas = [];
+    var RE = /(```[\s\S]*?```|`[^`\n]*`)|(\$\$[\s\S]*?\$\$)|(\$(?:\\.|[^$\\\n])+?\$)/g;
+
+    var limpo = md.replace(RE, function(todo, codigo, bloco, linha){
+      if(codigo) return codigo;
+      var tex, display;
+      if(bloco){ tex = bloco.slice(2, -2); display = true; }
+      else     { tex = linha.slice(1, -1);  display = false; }
+      formulas.push({ tex: tex, display: display });
+      return 'zzformulaz' + (formulas.length - 1) + 'zend';
+    });
+
+    // 2. o markdown roda sem tocar em nada matematico
+    marked.setOptions({ gfm:true, breaks:false });
+    var html = marked.parse(limpo);
+
+    // 3. devolve cada formula ja renderizada
+    html = html.replace(/zzformulaz(\d+)zend/g, function(t, i){
+      var f = formulas[+i];
+      if(!f) return '';
+      try {
+        return katex.renderToString(f.tex, {
+          displayMode: f.display,
+          throwOnError: false,
+          strict: false,
+          trust: true
+        });
+      } catch(e){
+        return '<code>' + f.tex.replace(/</g, '&lt;') + '</code>';
+      }
+    });
+
+    alvo.innerHTML = html;
+    arrumarCallouts();
+    limparTitulos();
+    montarSumario();
+    if(typeof inserirAnimacoes === 'function') inserirAnimacoes(alvo, arquivo);
+
+    var h1 = alvo.querySelector('h1');
+    if(h1) document.title = h1.textContent.trim() + ' — Sistemas de Controle';
+  }
+
+  function arrumarCallouts(){
+    alvo.querySelectorAll('blockquote').forEach(function(bq){
+      var m = bq.textContent.match(/^\s*\[!(\w+)\]/);
+      if(!m) return;
+      bq.classList.add('callout', 'callout-' + m[1].toLowerCase());
+      bq.innerHTML = bq.innerHTML.replace(/\[!\w+\]\s*/, '');
+    });
+  }
+
+  function limparTitulos(){
+    alvo.querySelectorAll('h1, h2, h3').forEach(function(h){
+      var m = h.textContent.match(/^\s*([\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]+)\s*/u);
+      if(!m) return;
+      h.classList.add('com-marca');
+      h.innerHTML = '<span class="hmarca" aria-hidden="true">' + m[1] + '</span>' +
+                    h.innerHTML.replace(m[0], '');
+    });
+  }
+
+  function montarSumario(){
+    var hs = alvo.querySelectorAll('h2');
+    if(!hs.length){ sumEl.style.display = 'none'; return; }
+    var html = '<p class="sumario-tit">Nesta aula</p><ul>';
+    hs.forEach(function(h, i){
+      h.id = 'sec' + i;
+      html += '<li><a href="#sec' + i + '">' + h.textContent.trim() + '</a></li>';
+    });
+    sumEl.innerHTML = html + '</ul>';
+  }
+})();
+</script>
+
+</body>
+</html>

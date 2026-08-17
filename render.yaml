@@ -1,0 +1,45 @@
+services:
+  # ---------- portal, estático e sempre no ar ----------
+  - type: web
+    name: portal-sistemas-de-controle
+    runtime: static
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /simulador
+        destination: /simulador.html
+      - type: rewrite
+        source: /questionario
+        destination: /questionario.html
+      - type: rewrite
+        source: /avaliacao
+        destination: /avaliacao.html
+      - type: rewrite
+        source: /painel
+        destination: /painel.html
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=300
+
+  # ---------- API dos questionários ----------
+  - type: web
+    name: portal-controle-api
+    runtime: python
+    rootDir: api
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /saude
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: MONGODB_URI
+        sync: false          # cole no painel do Render, nunca no repositório
+      - key: MONGODB_BANCO
+        value: portal_controle
+      - key: ORIGENS
+        value: https://portal-sistemas-de-controle.onrender.com
+      - key: CHAVE_PROFESSOR
+        sync: false

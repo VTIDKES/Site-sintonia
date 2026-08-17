@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador CSS — Sistemas de Controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="index.html">
+    <span class="marca-sig">C(s)</span>
+    <span class="marca-txt">Sistemas de Controle</span>
+  </a>
+  <nav class="nav" aria-label="Seções do portal">
+    <a href="index.html#aulas">Aulas</a>
+    <a href="index.html#modelos">Modelos</a>
+    <a href="index.html#avaliacao">Avaliação</a>
+  </nav>
+</header>
+
+<main class="palco">
+  <div class="palco-topo">
+    <h1>Simulador CSS</h1>
+    <a class="voltar" href="https://projeto-css-sintonia-ifrn.streamlit.app/" target="_blank" rel="noopener">Abrir em tela cheia &rarr;</a>
+  </div>
+
+  <div class="moldura">
+    <!--
+      O parâmetro ?embed=true é obrigatório.
+      Sem ele o Streamlit Community Cloud bloqueia a exibição dentro de um iframe.
+    -->
+    <iframe
+      src="https://projeto-css-sintonia-ifrn.streamlit.app/?embed=true"
+      title="Simulador de Sistemas de Controle"
+      allow="clipboard-write"
+      loading="lazy"></iframe>
+  </div>
+
+  <p class="nota">A tela cheia funciona melhor no celular. Se o app ficar dias sem uso, a primeira abertura pode levar alguns segundos.</p>
+</main>
+
+</body>
+</html>

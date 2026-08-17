@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistemas de Controle — Portal da disciplina</title>
+<meta name="description" content="Portal da disciplina de Sistemas de Controle: aulas, simulações interativas, modelos físicos e avaliação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="index.html">
+    <span class="marca-sig">C(s)</span>
+    <span class="marca-txt">Sistemas de Controle</span>
+  </a>
+  <nav class="nav" aria-label="Seções do portal">
+    <a href="#simulador">Simulador</a>
+    <a href="#aulas">Aulas</a>
+    <a href="#modelos">Modelos</a>
+    <a href="questionario.html">Questionários</a>
+    <a href="#avaliacao">Avaliação</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-txt">
+      <p class="eyebrow">IFRN &middot; Engenharia de Energia</p>
+      <h1>Sistemas de<br>Controle</h1>
+      <p class="lead">As aulas, as simulações e o material da disciplina em um lugar só.</p>
+      <p class="dica">Clique em um bloco da malha para ir direto ao material.</p>
+    </div>
+
+    <figure class="diagrama-wrap">
+      <svg class="diagrama" viewBox="0 0 900 270" role="img" aria-labelledby="dg-t dg-d" preserveAspectRatio="xMidYMid meet">
+        <title id="dg-t">Diagrama de blocos de um sistema de controle em malha fechada</title>
+        <desc id="dg-d">A referência entra em um somador, passa pelo controlador C de s e pela planta G de s, gerando a saída. A saída retorna pelo sensor H de s até o somador. Cada bloco é um atalho para uma seção do portal.</desc>
+
+        <defs>
+          <polygon id="seta" points="0,0 -10,-5.5 -10,5.5"></polygon>
+        </defs>
+
+        <g class="trilha">
+          <path d="M 30 110 H 860"></path>
+          <path d="M 700 110 V 208 H 112 V 110"></path>
+        </g>
+        <g class="fluxo" aria-hidden="true">
+          <path d="M 30 110 H 860"></path>
+          <path d="M 700 110 V 208 H 112 V 110"></path>
+        </g>
+
+        <g class="setas">
+          <use href="#seta" transform="translate(90,110)"></use>
+          <use href="#seta" transform="translate(194,110)"></use>
+          <use href="#seta" transform="translate(424,110)"></use>
+          <use href="#seta" transform="translate(858,110)"></use>
+          <use href="#seta" transform="translate(562,208) rotate(180)"></use>
+          <use href="#seta" transform="translate(112,134) rotate(-90)"></use>
+        </g>
+
+        <circle class="no" cx="700" cy="110" r="4.5"></circle>
+
+        <a href="#avaliacao" class="bloco bloco-soma">
+          <circle cx="112" cy="110" r="20"></circle>
+          <text class="sinal-op" x="94" y="88">+</text>
+          <text class="sinal-op" x="92" y="152">&minus;</text>
+          <text class="bloco-fn" x="112" y="116">&Sigma;</text>
+        </a>
+
+        <a href="#simulador" class="bloco">
+          <rect x="196" y="72" width="160" height="76" rx="3"></rect>
+          <text class="bloco-nome" x="276" y="102">Controlador</text>
+          <text class="bloco-fn" x="276" y="128">C(s)</text>
+        </a>
+
+        <a href="#aulas" class="bloco">
+          <rect x="426" y="72" width="160" height="76" rx="3"></rect>
+          <text class="bloco-nome" x="506" y="102">Planta</text>
+          <text class="bloco-fn" x="506" y="128">G(s)</text>
+        </a>
+
+        <a href="#modelos" class="bloco">
+          <rect x="400" y="180" width="160" height="56" rx="3"></rect>
+          <text class="bloco-nome" x="480" y="203">Sensor</text>
+          <text class="bloco-fn bloco-fn-sm" x="480" y="224">H(s)</text>
+        </a>
+
+        <g class="rotulo">
+          <text x="34" y="98">r(t)</text>
+          <text x="152" y="98">e(t)</text>
+          <text x="382" y="98">u(t)</text>
+          <text x="800" y="98">y(t)</text>
+        </g>
+      </svg>
+    </figure>
+  </section>
+
+  <section id="simulador" class="secao">
+    <p class="marcador">C(s)</p>
+    <div class="secao-corpo">
+      <h2>Simulador CSS</h2>
+      <p>Monte a função de transferência, veja a resposta ao degrau, Bode, Nyquist e lugar das raízes, e ajuste o PID direto no navegador. Não precisa instalar nada.</p>
+      <p class="acoes">
+        <a class="btn" href="simulador.html">Abrir o simulador</a>
+        <a class="btn btn-fantasma" href="https://projeto-css-sintonia-ifrn.streamlit.app/" target="_blank" rel="noopener">Abrir em nova aba</a>
+      </p>
+      <p class="nota">Se o app ficar dias sem uso, a primeira abertura pode levar alguns segundos para acordar.</p>
+    </div>
+  </section>
+
+  <section id="aulas" class="secao">
+    <p class="marcador">G(s)</p>
+    <div class="secao-corpo">
+      <h2>Aulas</h2>
+      <p>Doze aulas com fórmulas, tabelas, exemplos em Scilab e animações que ilustram cada conceito.</p>
+      <ul class="lista">
+        <li><a href="aula.html?f=01_sinais_e_sistemas">1. Sinais e sistemas lineares</a><span>Aula</span></li>
+        <li><a href="aula.html?f=02_laplace">2. Transformada de Laplace</a><span>Aula</span></li>
+        <li><a href="aula.html?f=03_dinamica_ordem1">3. Dinâmica de 1ª ordem</a><span>Aula</span></li>
+        <li><a href="aula.html?f=04_dinamica_ordem2">4. Dinâmica de 2ª ordem</a><span>Aula</span></li>
+        <li><a href="aula.html?f=05_realimentacao">5. Sistemas com realimentação</a><span>Aula</span></li>
+        <li><a href="aula.html?f=06_estabilidade">6. Estabilidade e Routh-Hurwitz</a><span>Aula</span></li>
+        <li><a href="aula.html?f=07_frequencia_bode">7. Resposta em frequência e Bode</a><span>Aula</span></li>
+        <li><a href="aula.html?f=08_nyquist">8. Critério de Nyquist</a><span>Aula</span></li>
+        <li><a href="aula.html?f=09_espaco_de_estados">9. Espaço de estados</a><span>Aula</span></li>
+        <li><a href="aula.html?f=10_lugar_das_raizes">10. Lugar das raízes</a><span>Aula</span></li>
+        <li><a href="aula.html?f=11_pid_e_sintonia">11. Controladores PID e sintonia</a><span>Aula</span></li>
+        <li><a href="aula.html?f=12_compensadores">12. Compensadores de avanço e atraso</a><span>Aula</span></li>
+      </ul>
+      <p class="nota">As aulas 10, 11 e 12 fecham a sequência clássica: projeto no plano s, sintonia de PID e compensação por avanço e atraso.</p>
+    </div>
+  </section>
+
+  <section id="modelos" class="secao">
+    <p class="marcador">H(s)</p>
+    <div class="secao-corpo">
+      <h2>Modelos físicos</h2>
+      <p>Da equação do componente até a função de transferência, com os diagramas dos elementos.</p>
+      <ul class="lista">
+        <li><a href="aula.html?f=teoria_sistemas_eletricos">Sistemas elétricos: RC, RLC e PID com amp-op</a><span>Referência</span></li>
+        <li><a href="aula.html?f=teoria_sistemas_mecanicos">Sistemas mecânicos: massa-mola-amortecedor</a><span>Referência</span></li>
+      </ul>
+      <p class="nota">Os dois documentos seguem a mesma analogia: trocando L por m, R por b e 1/C por k, as equações do RLC viram as do sistema mecânico.</p>
+    </div>
+  </section>
+
+  <section id="avaliacao" class="secao">
+    <p class="marcador">&Sigma;</p>
+    <div class="secao-corpo">
+      <h2>Avaliação e entregas</h2>
+      <p>O somador compara o que se espera com o que saiu. Aqui é a mesma ideia.</p>
+      <p class="acoes">
+        <a class="btn" href="questionario.html">Abrir os questionários</a>
+        <a class="btn btn-fantasma" href="avaliacao.html">Avaliar o portal</a>
+      </p>
+      <p class="nota">Doze questionários de múltipla escolha, um por aula, com correção na hora e explicação item a item. A avaliação do portal é anônima e leva cinco minutos.</p>
+      <ul class="lista">
+        <li><a href="#">Plano de ensino</a><span>PDF</span></li>
+        <li><a href="#">Critérios de correção dos relatórios</a><span>PDF</span></li>
+        <li><a href="#">Calendário de entregas</a><span>Link</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <p>Portal da disciplina de Sistemas de Controle</p>
+  <p class="rodape-sec">Atualizado em <time datetime="2026-08">agosto de 2026</time> &middot; <a href="painel.html">painel</a></p>
+</footer>
+
+</body>
+</html>

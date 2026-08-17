@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questionários — Sistemas de Controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="index.html">
+    <span class="marca-sig">C(s)</span>
+    <span class="marca-txt">Sistemas de Controle</span>
+  </a>
+  <nav class="nav" aria-label="Seções do portal">
+    <a href="index.html#aulas">Aulas</a>
+    <a href="index.html#modelos">Modelos</a>
+    <a href="index.html#avaliacao">Avaliação</a>
+  </nav>
+</header>
+
+<main class="quiz">
+
+  <div class="quiz-topo">
+    <p class="eyebrow">Avaliação</p>
+    <h1 id="quiz-titulo">Questionários</h1>
+    <p class="lead" id="quiz-lead">Escolha uma aula, responda e receba a correção na hora, com a explicação de cada item.</p>
+    <p class="nota" id="quiz-estado">Conectando ao servidor…</p>
+  </div>
+
+  <!-- lista de questionários -->
+  <section id="quiz-lista" hidden>
+    <ul class="lista" id="quiz-lista-ul"></ul>
+  </section>
+
+  <!-- formulário -->
+  <form id="quiz-form" hidden autocomplete="off">
+    <fieldset class="ident">
+      <legend>Identificação</legend>
+      <div class="ident-grid">
+        <label>Nome completo
+          <input type="text" id="f-nome" required minlength="2" maxlength="80">
+        </label>
+        <label>Matrícula
+          <input type="text" id="f-matricula" required maxlength="30">
+        </label>
+        <label>Turma
+          <input type="text" id="f-turma" maxlength="40" placeholder="opcional">
+        </label>
+      </div>
+    </fieldset>
+
+    <div id="quiz-questoes"></div>
+
+    <div class="quiz-acoes">
+      <button type="submit" class="btn" id="f-enviar">Enviar respostas</button>
+      <a class="btn btn-fantasma" href="questionario.html">Trocar de questionário</a>
+    </div>
+    <p class="nota" id="f-aviso"></p>
+  </form>
+
+  <!-- resultado -->
+  <section id="quiz-resultado" hidden></section>
+
+</main>
+
+<footer class="rodape">
+  <p>As respostas ficam registradas para acompanhamento da disciplina.</p>
+  <p class="rodape-sec"><a href="index.html">Voltar ao portal</a></p>
+</footer>
+
+<script src="config.js"></script>
+<script src="questionario.js"></script>
+</body>
+</html>

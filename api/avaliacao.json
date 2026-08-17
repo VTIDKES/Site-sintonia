@@ -1,0 +1,80 @@
+{
+  "codigo": "validacao_portal_v1",
+  "titulo": "Avaliação do portal de Sistemas de Controle",
+  "apresentacao": "Este questionário avalia o portal como recurso de apoio ao estudo. Não há resposta certa ou errada, e a participação é anônima: nenhum dado que identifique você é solicitado. Leva cerca de cinco minutos.",
+  "escala": {
+    "minimo": 1,
+    "maximo": 5,
+    "rotulos": {
+      "1": "Discordo totalmente",
+      "2": "Discordo",
+      "3": "Neutro",
+      "4": "Concordo",
+      "5": "Concordo totalmente"
+    }
+  },
+
+  "perfil": [
+    {
+      "id": "periodo",
+      "pergunta": "Em que momento da disciplina você está?",
+      "opcoes": ["Cursando agora", "Já cursei", "Ainda vou cursar", "Não sou aluno da disciplina"]
+    },
+    {
+      "id": "dispositivo",
+      "pergunta": "Em qual dispositivo você mais usou o portal?",
+      "opcoes": ["Computador", "Celular", "Tablet", "Usei mais de um"]
+    },
+    {
+      "id": "frequencia",
+      "pergunta": "Com que frequência você acessou o portal?",
+      "opcoes": ["Uma única vez", "Algumas vezes", "Semanalmente", "Quase todo dia"]
+    },
+    {
+      "id": "simulador",
+      "pergunta": "Você chegou a usar o Simulador CSS?",
+      "opcoes": ["Sim, várias vezes", "Sim, uma vez", "Abri mas não usei", "Não usei"]
+    }
+  ],
+
+  "dimensoes": {
+    "UP": "Utilidade percebida",
+    "FU": "Facilidade de uso",
+    "QC": "Qualidade do conteúdo",
+    "RV": "Recursos visuais e animações",
+    "IU": "Satisfação e intenção de uso"
+  },
+
+  "itens": [
+    { "id": "up1", "dim": "UP", "texto": "O portal me ajudou a entender melhor os conteúdos da disciplina." },
+    { "id": "up2", "dim": "UP", "texto": "Estudar pelo portal foi mais produtivo do que estudar só pelas minhas anotações." },
+    { "id": "up3", "dim": "UP", "texto": "O portal me ajudou a relacionar a teoria com o comportamento real dos sistemas." },
+    { "id": "up4", "dim": "UP", "texto": "Consegui esclarecer dúvidas usando o portal, sem precisar de outra fonte." },
+
+    { "id": "fu1", "dim": "FU", "texto": "Foi fácil encontrar o conteúdo que eu procurava." },
+    { "id": "fu2", "dim": "FU", "texto": "A navegação entre as aulas é clara e direta." },
+    { "id": "fu3", "dim": "FU", "texto": "Precisei de ajuda de alguém para conseguir usar o portal.", "reverso": true },
+    { "id": "fu4", "dim": "FU", "texto": "O portal funcionou bem no dispositivo que utilizei." },
+
+    { "id": "qc1", "dim": "QC", "texto": "O conteúdo das aulas está bem organizado." },
+    { "id": "qc2", "dim": "QC", "texto": "As fórmulas e equações estão apresentadas de forma legível." },
+    { "id": "qc3", "dim": "QC", "texto": "A profundidade do conteúdo é adequada para a disciplina." },
+    { "id": "qc4", "dim": "QC", "texto": "Encontrei erros ou informações confusas no conteúdo.", "reverso": true },
+
+    { "id": "rv1", "dim": "RV", "texto": "As animações facilitaram o entendimento dos conceitos." },
+    { "id": "rv2", "dim": "RV", "texto": "Ver os polos se movendo ajudou a compreender o efeito dos parâmetros." },
+    { "id": "rv3", "dim": "RV", "texto": "As animações são mais úteis que figuras estáticas para esses conteúdos." },
+    { "id": "rv4", "dim": "RV", "texto": "O diagrama de blocos da página inicial deixa claro como o portal está organizado." },
+
+    { "id": "iu1", "dim": "IU", "texto": "Pretendo continuar usando o portal ao longo da disciplina." },
+    { "id": "iu2", "dim": "IU", "texto": "Recomendaria o portal a outros estudantes." },
+    { "id": "iu3", "dim": "IU", "texto": "Gostaria que outras disciplinas tivessem um recurso parecido." },
+    { "id": "iu4", "dim": "IU", "texto": "De modo geral, estou satisfeito com o portal." }
+  ],
+
+  "abertas": [
+    { "id": "a1", "pergunta": "O que mais ajudou no seu estudo?", "obrigatoria": false },
+    { "id": "a2", "pergunta": "O que atrapalhou ou ficou confuso?", "obrigatoria": false },
+    { "id": "a3", "pergunta": "Que recurso você sente falta no portal?", "obrigatoria": false }
+  ]
+}

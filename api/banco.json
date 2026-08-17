@@ -1,0 +1,649 @@
+{
+  "01_sinais_e_sistemas": {
+    "titulo": "1. Sinais e sistemas lineares",
+    "questoes": [
+      {
+        "id": "01a",
+        "enunciado": "Qual a diferença essencial entre malha aberta e malha fechada?",
+        "alternativas": {
+          "a": "A malha fechada é sempre mais rápida que a malha aberta",
+          "b": "A malha fechada mede a saída e usa o erro para corrigir a ação de controle",
+          "c": "A malha aberta não possui controlador",
+          "d": "A malha aberta só funciona com sinais digitais"
+        },
+        "correta": "b",
+        "explicacao": "O que define a malha fechada é a medição da saída e a comparação com a referência. O erro resultante alimenta o controlador. Velocidade não é o critério: uma malha fechada mal sintonizada pode ser mais lenta que a malha aberta."
+      },
+      {
+        "id": "01b",
+        "enunciado": "Um sistema é marginalmente estável quando sua resposta natural:",
+        "alternativas": {
+          "a": "Tende a zero quando t tende a infinito",
+          "b": "Cresce sem limites",
+          "c": "Permanece constante ou oscila com amplitude fixa",
+          "d": "Depende apenas da entrada aplicada"
+        },
+        "correta": "c",
+        "explicacao": "Na estabilidade marginal a resposta natural nem converge para zero nem diverge: fica oscilando com amplitude constante, o que corresponde a polos simples sobre o eixo imaginário."
+      },
+      {
+        "id": "01c",
+        "enunciado": "Dois blocos H1(s) e H2(s) ligados em cascata equivalem a:",
+        "alternativas": {
+          "a": "H1(s) + H2(s)",
+          "b": "H1(s) · H2(s)",
+          "c": "H1(s) / [1 + H1(s)H2(s)]",
+          "d": "H1(s) − H2(s)"
+        },
+        "correta": "b",
+        "explicacao": "Em cascata as funções de transferência se multiplicam. A soma corresponde à ligação em paralelo, e a terceira expressão é a forma da malha fechada com realimentação."
+      },
+      {
+        "id": "01d",
+        "enunciado": "Qual entrada de teste é a mais usada para avaliar simultaneamente o transitório e o erro de regime permanente?",
+        "alternativas": {
+          "a": "Impulso",
+          "b": "Degrau",
+          "c": "Parábola",
+          "d": "Ruído branco"
+        },
+        "correta": "b",
+        "explicacao": "O degrau excita o transitório e permite ler diretamente o valor final, revelando o erro de regime. O impulso serve para o transitório, e a parábola é usada especificamente para avaliar erro em sistemas de tipo elevado."
+      }
+    ]
+  },
+
+  "02_laplace": {
+    "titulo": "2. Transformada de Laplace",
+    "questoes": [
+      {
+        "id": "02a",
+        "enunciado": "O teorema do valor final só pode ser aplicado quando:",
+        "alternativas": {
+          "a": "A função f(t) for periódica",
+          "b": "Os polos de sF(s) estiverem no semiplano esquerdo",
+          "c": "O sistema for de primeira ordem",
+          "d": "As condições iniciais forem nulas"
+        },
+        "correta": "b",
+        "explicacao": "Aplicar o teorema a um sistema instável ou marginalmente estável produz um número que não corresponde a limite algum, porque o limite no tempo simplesmente não existe."
+      },
+      {
+        "id": "02b",
+        "enunciado": "A convolução no domínio do tempo corresponde, no domínio de Laplace, a:",
+        "alternativas": {
+          "a": "Uma soma",
+          "b": "Uma multiplicação",
+          "c": "Uma derivação",
+          "d": "Outra convolução"
+        },
+        "correta": "b",
+        "explicacao": "É justamente essa propriedade que torna Laplace tão útil: a integral de convolução, difícil de calcular, vira um produto algébrico simples."
+      },
+      {
+        "id": "02c",
+        "enunciado": "Um par de polos complexos conjugados em s = −σ ± jω corresponde, no tempo, a:",
+        "alternativas": {
+          "a": "Uma exponencial pura",
+          "b": "Uma rampa",
+          "c": "Uma senoide amortecida",
+          "d": "Um degrau atrasado"
+        },
+        "correta": "c",
+        "explicacao": "A parte real define o envelope exponencial e a parte imaginária define a frequência de oscilação. Juntas produzem uma senoide amortecida."
+      },
+      {
+        "id": "02d",
+        "enunciado": "O atraso de transporte e^(−θs) costuma ser aproximado por:",
+        "alternativas": {
+          "a": "Série de Fourier",
+          "b": "Aproximação de Padé",
+          "c": "Expansão em frações parciais",
+          "d": "Critério de Routh"
+        },
+        "correta": "b",
+        "explicacao": "A aproximação de Padé representa o atraso puro por uma razão de polinômios, o que permite tratá-lo com as ferramentas de sistemas racionais."
+      }
+    ]
+  },
+
+  "03_dinamica_ordem1": {
+    "titulo": "3. Dinâmica de 1ª ordem",
+    "questoes": [
+      {
+        "id": "03a",
+        "enunciado": "Em um sistema de primeira ordem, aumentar apenas o ganho k:",
+        "alternativas": {
+          "a": "Altera o valor final e mantém a constante de tempo",
+          "b": "Altera a constante de tempo e mantém o valor final",
+          "c": "Altera os dois",
+          "d": "Não altera nenhum dos dois"
+        },
+        "correta": "a",
+        "explicacao": "A constante de tempo depende só do polo: τ = 1/a. O ganho escala a resposta verticalmente, mudando y(∞) = k/a sem afetar a velocidade."
+      },
+      {
+        "id": "03b",
+        "enunciado": "Após uma constante de tempo, a resposta ao degrau de um sistema de primeira ordem atinge aproximadamente:",
+        "alternativas": {
+          "a": "50% do valor final",
+          "b": "63% do valor final",
+          "c": "86% do valor final",
+          "d": "98% do valor final"
+        },
+        "correta": "b",
+        "explicacao": "Em t = τ temos 1 − e⁻¹ ≈ 0,632. Os 86% correspondem a 2τ e os 98% a 4τ, valor usado como tempo de acomodação."
+      },
+      {
+        "id": "03c",
+        "enunciado": "Um zero no semiplano direito produz qual efeito característico na resposta ao degrau?",
+        "alternativas": {
+          "a": "Oscilação permanente",
+          "b": "A saída parte na direção oposta antes de seguir para o valor final",
+          "c": "Instabilidade garantida",
+          "d": "Erro de regime permanente infinito"
+        },
+        "correta": "b",
+        "explicacao": "É o comportamento de fase não mínima. O sistema continua estável, já que a estabilidade depende dos polos, mas a reversão inicial limita muito o ganho utilizável em malha fechada."
+      },
+      {
+        "id": "03d",
+        "enunciado": "Um sistema com polo na origem, H(s) = k/s, responde a um degrau em malha aberta com:",
+        "alternativas": {
+          "a": "Uma exponencial que satura",
+          "b": "Uma rampa que cresce indefinidamente",
+          "c": "Uma senoide",
+          "d": "Um valor constante imediato"
+        },
+        "correta": "b",
+        "explicacao": "O polo na origem é um integrador, e a integral de um degrau é uma rampa. Em malha fechada, esse mesmo integrador é o que garante erro nulo ao degrau."
+      }
+    ]
+  },
+
+  "04_dinamica_ordem2": {
+    "titulo": "4. Dinâmica de 2ª ordem",
+    "questoes": [
+      {
+        "id": "04a",
+        "enunciado": "A ultrapassagem percentual de um sistema de segunda ordem padrão depende de:",
+        "alternativas": {
+          "a": "Apenas de ωn",
+          "b": "Apenas de ζ",
+          "c": "Do produto ζ·ωn",
+          "d": "Apenas do ganho k"
+        },
+        "correta": "b",
+        "explicacao": "%UP = 100·e^(−πζ/√(1−ζ²)) contém somente ζ. A frequência natural muda a escala de tempo da resposta, não a altura relativa do pico."
+      },
+      {
+        "id": "04b",
+        "enunciado": "Para ζ = 0,7 e ωn = 4 rad/s, o tempo de acomodação em ±2% vale aproximadamente:",
+        "alternativas": {
+          "a": "0,7 s",
+          "b": "1,4 s",
+          "c": "2,8 s",
+          "d": "5,6 s"
+        },
+        "correta": "b",
+        "explicacao": "Ts ≈ 4/(ζωn) = 4/(0,7 × 4) = 4/2,8 ≈ 1,43 s. Repare que só a parte real do polo importa nessa estimativa."
+      },
+      {
+        "id": "04c",
+        "enunciado": "Polos complexos conjugados com ωn fixo e ζ decrescente se movem no plano s:",
+        "alternativas": {
+          "a": "Sobre uma reta vertical, afastando-se do eixo real",
+          "b": "Sobre uma circunferência de raio ωn, aproximando-se do eixo imaginário",
+          "c": "Sobre o eixo real, para a esquerda",
+          "d": "Radialmente para longe da origem"
+        },
+        "correta": "b",
+        "explicacao": "O módulo dos polos é sempre ωn e o ângulo com o eixo real negativo é arccos(ζ). Com ωn fixo, variar ζ desliza os polos sobre a circunferência."
+      },
+      {
+        "id": "04d",
+        "enunciado": "As fórmulas de Tp, Ts e %UP valem para qual situação?",
+        "alternativas": {
+          "a": "Qualquer sistema de segunda ordem ou superior",
+          "b": "Apenas sistemas com exatamente dois polos complexos e nenhum zero",
+          "c": "Apenas sistemas sobreamortecidos",
+          "d": "Apenas sistemas em malha aberta"
+        },
+        "correta": "b",
+        "explicacao": "Um polo adicional próximo ou um zero na vizinhança altera a resposta o bastante para invalidar as estimativas. A regra prática exige que os demais polos estejam ao menos cinco vezes mais à esquerda."
+      }
+    ]
+  },
+
+  "05_realimentacao": {
+    "titulo": "5. Sistemas com realimentação",
+    "questoes": [
+      {
+        "id": "05a",
+        "enunciado": "O tipo de um sistema corresponde ao número de:",
+        "alternativas": {
+          "a": "Zeros na origem da malha aberta",
+          "b": "Polos na origem da malha aberta",
+          "c": "Polos totais da malha fechada",
+          "d": "Entradas do sistema"
+        },
+        "correta": "b",
+        "explicacao": "Cada integrador na malha aberta eleva o tipo em uma unidade e elimina o erro para uma classe a mais de entradas."
+      },
+      {
+        "id": "05b",
+        "enunciado": "Um sistema de tipo 0 submetido a uma entrada em rampa apresenta erro de regime:",
+        "alternativas": {
+          "a": "Nulo",
+          "b": "Igual a 1/(1+Kp)",
+          "c": "Igual a 1/Kv",
+          "d": "Infinito"
+        },
+        "correta": "d",
+        "explicacao": "Sem integrador, o sistema não consegue acompanhar uma entrada que cresce continuamente, e o erro diverge. Para a rampa é necessário pelo menos tipo 1."
+      },
+      {
+        "id": "05c",
+        "enunciado": "Para a planta G(s) = k/(s+a) com realimentação unitária, aumentar k faz o erro de regime:",
+        "alternativas": {
+          "a": "Ir a zero para qualquer k",
+          "b": "Diminuir, tendendo a zero apenas com k infinito",
+          "c": "Aumentar",
+          "d": "Permanecer constante"
+        },
+        "correta": "b",
+        "explicacao": "O erro vale a/(a+k). Ele cai conforme k cresce, mas só zeraria com ganho infinito. Zerar de fato exige acrescentar um integrador, elevando o tipo do sistema."
+      },
+      {
+        "id": "05d",
+        "enunciado": "Em uma planta de terceira ordem, aumentar indefinidamente o ganho de malha fechada:",
+        "alternativas": {
+          "a": "Sempre melhora o desempenho",
+          "b": "Acaba levando o sistema à instabilidade",
+          "c": "Não afeta a estabilidade",
+          "d": "Elimina o erro de regime sem efeitos colaterais"
+        },
+        "correta": "b",
+        "explicacao": "A partir da terceira ordem existe sempre um ganho crítico em que os polos de malha fechada cruzam para o semiplano direito. É o que o lugar das raízes e o critério de Nyquist mostram graficamente."
+      }
+    ]
+  },
+
+  "06_estabilidade": {
+    "titulo": "6. Estabilidade e Routh-Hurwitz",
+    "questoes": [
+      {
+        "id": "06a",
+        "enunciado": "No critério de Routh-Hurwitz, o número de mudanças de sinal na primeira coluna indica:",
+        "alternativas": {
+          "a": "A ordem do sistema",
+          "b": "O número de polos no semiplano direito",
+          "c": "O ganho crítico",
+          "d": "O número de zeros do sistema"
+        },
+        "correta": "b",
+        "explicacao": "Cada troca de sinal na primeira coluna corresponde a uma raiz do polinômio característico com parte real positiva."
+      },
+      {
+        "id": "06b",
+        "enunciado": "Todos os coeficientes do polinômio característico serem positivos é uma condição:",
+        "alternativas": {
+          "a": "Necessária e suficiente para estabilidade",
+          "b": "Necessária, mas não suficiente",
+          "c": "Suficiente, mas não necessária",
+          "d": "Irrelevante para a estabilidade"
+        },
+        "correta": "b",
+        "explicacao": "Um coeficiente nulo ou negativo já garante instabilidade, mas todos positivos não bastam a partir da terceira ordem: é preciso montar a tabela de Routh."
+      },
+      {
+        "id": "06c",
+        "enunciado": "Uma linha inteira de zeros na tabela de Routh indica:",
+        "alternativas": {
+          "a": "Erro de cálculo",
+          "b": "Polos simétricos em relação à origem, tipicamente sobre o eixo imaginário",
+          "c": "Sistema assintoticamente estável",
+          "d": "Sistema de primeira ordem"
+        },
+        "correta": "b",
+        "explicacao": "A linha de zeros aponta raízes simétricas. Usa-se o polinômio auxiliar da linha anterior, e sua derivada preenche a linha para continuar a tabela."
+      },
+      {
+        "id": "06d",
+        "enunciado": "Para G(s) = k/[s(s+7)(s+11)] com realimentação unitária, a faixa de estabilidade é:",
+        "alternativas": {
+          "a": "k > 0 apenas",
+          "b": "0 < k < 1386",
+          "c": "k > 1386",
+          "d": "Qualquer valor de k"
+        },
+        "correta": "b",
+        "explicacao": "O denominador de malha fechada é s³ + 18s² + 77s + k. A tabela de Routh exige k > 0 e (1386 − k)/18 > 0, o que fecha o intervalo em 1386."
+      }
+    ]
+  },
+
+  "07_frequencia_bode": {
+    "titulo": "7. Resposta em frequência e Bode",
+    "questoes": [
+      {
+        "id": "07a",
+        "enunciado": "Na frequência de corte de um polo real, a magnitude cai e a fase vale, respectivamente:",
+        "alternativas": {
+          "a": "−3 dB e −45°",
+          "b": "0 dB e −90°",
+          "c": "−20 dB e −45°",
+          "d": "−3 dB e −90°"
+        },
+        "correta": "a",
+        "explicacao": "É o ponto de erro máximo da aproximação por assíntotas: 3 dB abaixo do valor assintótico e metade dos 90° totais de defasagem."
+      },
+      {
+        "id": "07b",
+        "enunciado": "Um par de polos complexos faz a magnitude decair, em alta frequência, a:",
+        "alternativas": {
+          "a": "−20 dB por década",
+          "b": "−40 dB por década",
+          "c": "−60 dB por década",
+          "d": "A magnitude não decai"
+        },
+        "correta": "b",
+        "explicacao": "Cada polo contribui com −20 dB por década, então dois polos somam −40. A fase total tende a −180°."
+      },
+      {
+        "id": "07c",
+        "enunciado": "O pico de ressonância no diagrama de Bode aparece quando:",
+        "alternativas": {
+          "a": "ζ > 1",
+          "b": "ζ = 1",
+          "c": "ζ < 0,707",
+          "d": "Sempre, para qualquer ζ"
+        },
+        "correta": "c",
+        "explicacao": "Abaixo de ζ = 1/√2 ≈ 0,707 a magnitude apresenta máximo em ωr = ωn√(1−2ζ²). Acima disso a curva apenas decai."
+      },
+      {
+        "id": "07d",
+        "enunciado": "A margem de fase é medida na frequência em que:",
+        "alternativas": {
+          "a": "A fase cruza −180°",
+          "b": "A magnitude cruza 0 dB",
+          "c": "A magnitude é máxima",
+          "d": "A fase é nula"
+        },
+        "correta": "b",
+        "explicacao": "Margem de fase se lê no cruzamento de ganho, onde |G| = 1. A margem de ganho é que se lê no cruzamento de fase, onde o ângulo passa por −180°."
+      }
+    ]
+  },
+
+  "08_nyquist": {
+    "titulo": "8. Critério de Nyquist",
+    "questoes": [
+      {
+        "id": "08a",
+        "enunciado": "No critério de Nyquist Z = N + P, o termo Z representa:",
+        "alternativas": {
+          "a": "O número de zeros da malha aberta",
+          "b": "O número de polos de malha fechada no semiplano direito",
+          "c": "O número de voltas ao redor da origem",
+          "d": "A ordem do sistema"
+        },
+        "correta": "b",
+        "explicacao": "Z conta os zeros de 1 + GH no semiplano direito, que são exatamente os polos instáveis da malha fechada. Estabilidade exige Z = 0."
+      },
+      {
+        "id": "08b",
+        "enunciado": "Para uma planta estável em malha aberta (P = 0), a malha fechada é estável se a curva de Nyquist:",
+        "alternativas": {
+          "a": "Passar pela origem",
+          "b": "Não encerrar o ponto (−1, j0)",
+          "c": "Encerrar o ponto (−1, j0) uma vez",
+          "d": "Cruzar o eixo imaginário"
+        },
+        "correta": "b",
+        "explicacao": "Com P = 0 é preciso N = 0, ou seja, nenhuma volta ao redor do ponto crítico."
+      },
+      {
+        "id": "08c",
+        "enunciado": "Quando o ganho k aumenta, a curva de Nyquist:",
+        "alternativas": {
+          "a": "Gira em torno da origem",
+          "b": "Dilata, mantendo a forma",
+          "c": "Desloca-se para a direita sem mudar de tamanho",
+          "d": "Não se altera"
+        },
+        "correta": "b",
+        "explicacao": "O ganho multiplica todos os pontos pelo mesmo fator: a curva infla como um balão até engolir o ponto crítico."
+      },
+      {
+        "id": "08d",
+        "enunciado": "Qual a principal vantagem de Nyquist sobre o critério de Bode?",
+        "alternativas": {
+          "a": "É mais rápido de traçar à mão",
+          "b": "Trata corretamente sistemas condicionalmente estáveis e plantas instáveis em malha aberta",
+          "c": "Dispensa o conhecimento da fase",
+          "d": "Só funciona para sistemas de primeira ordem"
+        },
+        "correta": "b",
+        "explicacao": "A contagem de encerramentos é rigorosa em qualquer caso. A leitura simplificada por Bode pode induzir a erro quando existem múltiplos cruzamentos de −180°."
+      }
+    ]
+  },
+
+  "09_espaco_de_estados": {
+    "titulo": "9. Espaço de estados",
+    "questoes": [
+      {
+        "id": "09a",
+        "enunciado": "Um sistema é completamente controlável quando a matriz de controlabilidade:",
+        "alternativas": {
+          "a": "É simétrica",
+          "b": "Tem posto igual à ordem n do sistema",
+          "c": "É diagonal",
+          "d": "Tem determinante nulo"
+        },
+        "correta": "b",
+        "explicacao": "Posto pleno significa que a entrada consegue alcançar todas as direções do espaço de estados, permitindo levar o sistema de qualquer estado inicial a qualquer estado desejado."
+      },
+      {
+        "id": "09b",
+        "enunciado": "A função de transferência é obtida das matrizes de estado por:",
+        "alternativas": {
+          "a": "H(s) = A + BC",
+          "b": "H(s) = C(sI − A)⁻¹B + D",
+          "c": "H(s) = (sI − A)B",
+          "d": "H(s) = CAB"
+        },
+        "correta": "b",
+        "explicacao": "A matriz resolvente (sI − A)⁻¹ carrega toda a dinâmica interna. C e B fazem a ligação com a saída e a entrada, e D é a transmissão direta."
+      },
+      {
+        "id": "09c",
+        "enunciado": "Sobre a relação entre as duas descrições, é correto afirmar que:",
+        "alternativas": {
+          "a": "A função de transferência sempre revela toda a dinâmica interna",
+          "b": "Modos não controláveis ou não observáveis podem não aparecer na função de transferência",
+          "c": "Cada sistema tem uma única representação em espaço de estados",
+          "d": "Espaço de estados não serve para sistemas MIMO"
+        },
+        "correta": "b",
+        "explicacao": "É exatamente por isso que um sistema pode ser estável no sentido BIBO e ainda assim ter um modo interno divergente escondido, que não aparece na relação entrada-saída."
+      },
+      {
+        "id": "09d",
+        "enunciado": "No retrato de fase, uma trajetória em espiral convergindo para a origem indica autovalores:",
+        "alternativas": {
+          "a": "Reais e negativos",
+          "b": "Complexos com parte real negativa",
+          "c": "Imaginários puros",
+          "d": "Reais de sinais opostos"
+        },
+        "correta": "b",
+        "explicacao": "A parte imaginária produz a rotação e a parte real negativa produz a contração, formando o foco estável. Reais negativos dariam um nó, imaginários puros um centro, e sinais opostos uma sela."
+      }
+    ]
+  },
+
+  "10_lugar_das_raizes": {
+    "titulo": "10. Lugar das raízes",
+    "questoes": [
+      {
+        "id": "10a",
+        "enunciado": "Os ramos do lugar das raízes partem de e chegam a, respectivamente:",
+        "alternativas": {
+          "a": "Zeros de malha aberta e polos de malha aberta",
+          "b": "Polos de malha aberta e zeros de malha aberta, com os excedentes indo ao infinito",
+          "c": "Polos de malha fechada e origem",
+          "d": "Origem e infinito"
+        },
+        "correta": "b",
+        "explicacao": "Com k = 0 as raízes coincidem com os polos de malha aberta. Com k tendendo ao infinito, m ramos terminam nos zeros finitos e os n − m restantes seguem as assíntotas."
+      },
+      {
+        "id": "10b",
+        "enunciado": "Um trecho do eixo real pertence ao lugar das raízes quando o total de polos e zeros à sua direita é:",
+        "alternativas": {
+          "a": "Par",
+          "b": "Ímpar",
+          "c": "Zero",
+          "d": "Maior que a ordem do sistema"
+        },
+        "correta": "b",
+        "explicacao": "A contagem ímpar é o que satisfaz a condição de ângulo de 180°. A contagem par corresponde ao lugar complementar, de ganho negativo."
+      },
+      {
+        "id": "10c",
+        "enunciado": "Para G(s) = k/[s(s+2)(s+3)], o centroide das assíntotas está em:",
+        "alternativas": {
+          "a": "−1,00",
+          "b": "−1,67",
+          "c": "−2,50",
+          "d": "−5,00"
+        },
+        "correta": "b",
+        "explicacao": "σa = (soma dos polos − soma dos zeros)/(n − m) = (0 − 2 − 3)/3 = −5/3 ≈ −1,67."
+      },
+      {
+        "id": "10d",
+        "enunciado": "Acrescentar um zero no semiplano esquerdo à malha aberta tende a:",
+        "alternativas": {
+          "a": "Empurrar os ramos para a direita, reduzindo a estabilidade",
+          "b": "Puxar os ramos para a esquerda, melhorando a estabilidade",
+          "c": "Não alterar o traçado",
+          "d": "Aumentar o número de ramos"
+        },
+        "correta": "b",
+        "explicacao": "Zeros atraem os ramos. É esse o mecanismo do compensador de avanço: o zero reposiciona o lugar das raízes de modo que a especificação passe a ser alcançável."
+      }
+    ]
+  },
+
+  "11_pid_e_sintonia": {
+    "titulo": "11. Controladores PID e sintonia",
+    "questoes": [
+      {
+        "id": "11a",
+        "enunciado": "A ação integral elimina o erro de regime ao degrau porque:",
+        "alternativas": {
+          "a": "Aumenta o ganho proporcional",
+          "b": "Acrescenta um polo na origem, elevando o tipo do sistema",
+          "c": "Filtra o ruído de medição",
+          "d": "Reduz a ordem do sistema"
+        },
+        "correta": "b",
+        "explicacao": "O termo Ki/s introduz um integrador. Enquanto houver erro a integral continua crescendo, e o equilíbrio só ocorre com erro nulo."
+      },
+      {
+        "id": "11b",
+        "enunciado": "O fenômeno de windup ocorre quando:",
+        "alternativas": {
+          "a": "O ganho derivativo é muito alto",
+          "b": "O atuador satura e a integral continua acumulando",
+          "c": "A referência muda muito devagar",
+          "d": "O sensor apresenta atraso"
+        },
+        "correta": "b",
+        "explicacao": "A integral acumula um esforço que o atuador não consegue entregar. Quando o erro finalmente inverte, essa carga demora a se desfazer e produz um sobressinal grande."
+      },
+      {
+        "id": "11c",
+        "enunciado": "Calcular a derivada sobre a medição em vez de sobre o erro serve para:",
+        "alternativas": {
+          "a": "Eliminar o erro de regime",
+          "b": "Evitar o pico de esforço quando a referência muda em degrau",
+          "c": "Aumentar o ganho em baixa frequência",
+          "d": "Reduzir o tempo de subida"
+        },
+        "correta": "b",
+        "explicacao": "A derivada de um degrau de referência é um impulso, o chamado derivative kick. Como d(r−y)/dt = −dy/dt para referência constante, a rejeição de perturbação não muda."
+      },
+      {
+        "id": "11d",
+        "enunciado": "No método do ganho crítico de Ziegler-Nichols, os parâmetros medidos são:",
+        "alternativas": {
+          "a": "O atraso L e a constante de tempo T",
+          "b": "O ganho crítico Ku e o período de oscilação Tu",
+          "c": "A margem de ganho e a margem de fase",
+          "d": "O sobressinal e o tempo de pico"
+        },
+        "correta": "b",
+        "explicacao": "Aumenta-se Kp até a oscilação sustentada, anotando o ganho e o período. O método da curva de reação é que usa L e T, medidos em malha aberta."
+      }
+    ]
+  },
+
+  "12_compensadores": {
+    "titulo": "12. Compensadores de avanço e atraso",
+    "questoes": [
+      {
+        "id": "12a",
+        "enunciado": "No compensador de avanço de fase, a posição relativa de zero e polo é:",
+        "alternativas": {
+          "a": "O polo está mais próximo da origem que o zero",
+          "b": "O zero está mais próximo da origem que o polo",
+          "c": "Zero e polo coincidem",
+          "d": "Ambos ficam no semiplano direito"
+        },
+        "correta": "b",
+        "explicacao": "Com |zc| < |pc| a fase resultante é positiva na faixa entre os dois, que é o avanço aproveitado no projeto. No compensador de atraso a ordem se inverte."
+      },
+      {
+        "id": "12b",
+        "enunciado": "O avanço de fase máximo ocorre na frequência:",
+        "alternativas": {
+          "a": "Na média aritmética entre zero e polo",
+          "b": "Na média geométrica entre zero e polo",
+          "c": "No próprio zero",
+          "d": "No próprio polo"
+        },
+        "correta": "b",
+        "explicacao": "ωm = √(zc·pc), que no eixo logarítmico do Bode corresponde ao ponto médio entre as duas frequências de quebra."
+      },
+      {
+        "id": "12c",
+        "enunciado": "O objetivo principal do compensador de atraso é:",
+        "alternativas": {
+          "a": "Aumentar a margem de fase",
+          "b": "Elevar o ganho em baixa frequência e reduzir o erro de regime",
+          "c": "Ampliar a banda passante",
+          "d": "Acelerar a resposta transitória"
+        },
+        "correta": "b",
+        "explicacao": "O atraso multiplica o ganho DC por β sem mexer significativamente na região da frequência de cruzamento, desde que seja posicionado cerca de uma década abaixo dela."
+      },
+      {
+        "id": "12d",
+        "enunciado": "Ao projetar um compensador de avanço-atraso, a ordem recomendada é:",
+        "alternativas": {
+          "a": "Atraso primeiro, avanço depois",
+          "b": "Avanço primeiro, atraso depois",
+          "c": "Os dois simultaneamente",
+          "d": "A ordem é irrelevante"
+        },
+        "correta": "b",
+        "explicacao": "Primeiro acerta-se o transitório e a margem de fase com o avanço. Só então o atraso corrige o erro de regime, colocado bem abaixo da nova frequência de cruzamento para não desfazer o trabalho anterior."
+      }
+    ]
+  }
+}

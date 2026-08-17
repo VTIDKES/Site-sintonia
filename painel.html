@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Painel — Sistemas de Controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="index.html">
+    <span class="marca-sig">C(s)</span>
+    <span class="marca-txt">Sistemas de Controle</span>
+  </a>
+  <nav class="nav" aria-label="Seções do portal">
+    <a href="index.html">Portal</a>
+  </nav>
+</header>
+
+<main class="quiz painel">
+
+  <div class="quiz-topo">
+    <p class="eyebrow">Uso interno</p>
+    <h1>Painel de resultados</h1>
+    <p class="lead">Questionários respondidos e avaliação do portal. A chave é a mesma configurada em <code>CHAVE_PROFESSOR</code> no Render.</p>
+  </div>
+
+  <form id="p-entrar" class="ident-solo">
+    <label>Chave do professor
+      <input type="password" id="p-chave" autocomplete="current-password" required>
+    </label>
+    <button class="btn" type="submit">Entrar</button>
+    <label class="lembrar"><input type="checkbox" id="p-lembrar"> lembrar neste navegador</label>
+  </form>
+
+  <p class="nota" id="p-estado"></p>
+
+  <div id="p-conteudo" hidden>
+    <nav class="abas" id="p-abas">
+      <button class="aba ativa" data-aba="questionarios" type="button">Questionários</button>
+      <button class="aba" data-aba="avaliacao" type="button">Avaliação do portal</button>
+      <button class="aba" data-aba="tentativas" type="button">Tentativas</button>
+    </nav>
+    <section id="p-painel"></section>
+  </div>
+
+</main>
+
+<footer class="rodape">
+  <p class="rodape-sec"><a href="index.html">Voltar ao portal</a></p>
+</footer>
+
+<script src="config.js"></script>
+<script src="painel.js"></script>
+</body>
+</html>

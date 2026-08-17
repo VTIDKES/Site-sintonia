@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avaliação do portal — Sistemas de Controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="index.html">
+    <span class="marca-sig">C(s)</span>
+    <span class="marca-txt">Sistemas de Controle</span>
+  </a>
+  <nav class="nav" aria-label="Seções do portal">
+    <a href="index.html#aulas">Aulas</a>
+    <a href="questionario.html">Questionários</a>
+    <a href="index.html#avaliacao">Avaliação</a>
+  </nav>
+</header>
+
+<main class="quiz">
+
+  <div class="quiz-topo">
+    <p class="eyebrow">Pesquisa</p>
+    <h1 id="av-titulo">Avaliação do portal</h1>
+    <p class="lead" id="av-apresentacao">Carregando…</p>
+    <p class="nota" id="av-estado">Conectando ao servidor…</p>
+  </div>
+
+  <form id="av-form" hidden autocomplete="off">
+    <div id="av-perfil"></div>
+    <div id="av-itens"></div>
+    <div id="av-abertas"></div>
+
+    <div class="quiz-acoes">
+      <button type="submit" class="btn" id="av-enviar">Enviar avaliação</button>
+      <span class="progresso" id="av-progresso"></span>
+    </div>
+    <p class="nota" id="av-aviso"></p>
+  </form>
+
+  <section id="av-fim" hidden></section>
+
+</main>
+
+<footer class="rodape">
+  <p>Respostas anônimas, usadas para melhorar o portal.</p>
+  <p class="rodape-sec"><a href="index.html">Voltar ao portal</a></p>
+</footer>
+
+<script src="config.js"></script>
+<script src="avaliacao.js"></script>
+</body>
+</html>
